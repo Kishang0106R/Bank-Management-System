@@ -1,9 +1,13 @@
 package bank.management.system;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
-import javax.swing.*;;
+
 public class Login extends JFrame implements ActionListener{
+    JButton login, clear, signup;
+    JTextField CardTextField;
+    JPasswordField pinTextField;
     Login(){
         setTitle("ATUOMATED TELLER MACHINE");
         setLayout(null);
@@ -27,8 +31,9 @@ public class Login extends JFrame implements ActionListener{
         cardno.setBounds(250, 130, 150, 40);
         add(cardno);
 
-        JTextField CardTextField = new JTextField();
+        CardTextField = new JTextField();
         CardTextField.setBounds(340, 130, 400, 40);
+        CardTextField.setFont(new Font("Arial", Font.BOLD, 18));
         add(CardTextField);
 
         JLabel pin = new JLabel("PIN:");
@@ -36,26 +41,30 @@ public class Login extends JFrame implements ActionListener{
         pin.setBounds(250, 190, 400, 40);
         add(pin);
 
-        JPasswordField pinTextField = new JPasswordField();
+        pinTextField = new JPasswordField();
         pinTextField.setBounds(340, 190, 400, 40);
+        pinTextField.setFont(new Font("Arial", Font.BOLD, 18));
         add(pinTextField);
 
-        JButton login = new JButton("SIGN IN");
+        login = new JButton("SIGN IN");
         login.setBounds(380, 250, 100, 40);
         login.setBackground(Color.black);
         login.setForeground(Color.white);
+        login.addActionListener(this);
         add(login);
 
-        JButton clear = new JButton("CLEAR");
+        clear = new JButton("CLEAR");
         clear.setBounds(580, 250, 100, 40);
         clear.setBackground(Color.black);
         clear.setForeground(Color.white);
+        clear.addActionListener(this);
         add(clear);
 
-        JButton signup = new JButton("SIGN UP");
+        signup = new JButton("SIGN UP");
         signup.setBounds(480, 310, 100, 40);
         signup.setBackground(Color.black);  
         signup.setForeground(Color.white);
+        signup.addActionListener(this);
         add(signup);
 
         setSize(800, 410);
@@ -65,6 +74,14 @@ public class Login extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
+        if(e.getSource()== clear){
+            CardTextField.setText("");
+            pinTextField.setText("");
+        } else if (e.getSource()== login){
+
+        } else if (e.getSource()== signup){
+
+        }
 
     }
     public static void main(String[] args) {
