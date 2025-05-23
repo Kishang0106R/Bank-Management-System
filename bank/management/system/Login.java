@@ -35,7 +35,7 @@ public class Login extends JFrame {
         pin.setBounds(250, 190, 400, 40);
         add(pin);
 
-        JTextField pinTextField = new JPasswordField();
+        JPasswordField pinTextField = new JPasswordField();
         pinTextField.setBounds(340, 190, 400, 40);
         add(pinTextField);
 
