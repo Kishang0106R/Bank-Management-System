@@ -1,8 +1,9 @@
 package bank.management.system;
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;;
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener{
     Login(){
         setTitle("ATUOMATED TELLER MACHINE");
         setLayout(null);
@@ -60,6 +61,11 @@ public class Login extends JFrame {
         setSize(800, 410);
         setVisible(true);
         setLocation(350, 200);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+
     }
     public static void main(String[] args) {
         new Login();
