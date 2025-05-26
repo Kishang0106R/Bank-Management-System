@@ -27,6 +27,26 @@ public class signupOne extends JFrame {
         name.setBounds(100, 120, 100, 30);
         add(name);
 
+        JLabel fatherName = new JLabel("Father's Name:");
+        fatherName.setFont(new Font("Raleway",Font.BOLD, 20));
+        fatherName.setBounds(100, 170, 200, 30);
+        add(fatherName);
+
+        JLabel DOB = new JLabel("Date of Birth: ");
+        DOB.setFont(new Font("Raleway", Font.BOLD, 20));
+        DOB.setBounds(100, 220, 200, 30);
+        add(DOB);
+
+        JLabel gender = new JLabel("Gender:");
+        gender.setFont(new Font("Raleway", Font.BOLD, 20));
+        gender.setBounds(100, 270, 200, 30);
+        add(gender);
+
+        JLabel email = new JLabel("Email Address:");
+        email.setFont(new Font("Raleway", Font.BOLD, 20));
+        email.setBounds(100, 320, 200, 30);
+        add(email);
+
         getContentPane().setBackground(Color.white);
         setSize(850, 870);
         setLocation(350, 0);
