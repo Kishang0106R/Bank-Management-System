@@ -47,6 +47,11 @@ public class signupOne extends JFrame {
         email.setBounds(100, 320, 200, 30);
         add(email);
 
+        JLabel maritalStatus = new JLabel("Marital Status:");
+        maritalStatus.setFont(new Font("Raleway", Font.BOLD, 20));
+        maritalStatus.setBounds(100, 370, 200, 30);
+        add(maritalStatus);
+
         getContentPane().setBackground(Color.white);
         setSize(850, 870);
         setLocation(350, 0);
