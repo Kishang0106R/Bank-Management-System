@@ -47,10 +47,32 @@ public class signupOne extends JFrame {
         email.setBounds(100, 320, 200, 30);
         add(email);
 
-        JLabel maritalStatus = new JLabel("Marital Status:");
-        maritalStatus.setFont(new Font("Raleway", Font.BOLD, 20));
-        maritalStatus.setBounds(100, 370, 200, 30);
-        add(maritalStatus);
+        JLabel MaritalStatus = new JLabel("Marital Status:");
+        MaritalStatus.setFont(new Font("Raleway", Font.BOLD, 20));
+        MaritalStatus.setBounds(100, 370, 200, 30);
+        add(MaritalStatus);
+
+        JLabel Address = new JLabel("Address:");
+        Address.setFont(new Font("Raleway", Font.BOLD, 20));
+        Address.setBounds(100, 420, 200, 30);
+        add(Address);
+
+        JLabel city = new JLabel("City:");
+        city.setFont(new Font("Raleway", Font.BOLD, 20));
+        city.setBounds(100, 470, 200, 30);
+        add(city);
+
+        JLabel state = new JLabel("State:");
+        state.setFont(new Font("Raleway", Font.BOLD, 20));
+        state.setBounds(100, 520, 200, 30);
+        add(state);
+
+        JLabel pincode = new JLabel("Pincode:");
+        pincode.setFont(new Font("Raleway", Font.BOLD, 20));
+        pincode.setBounds(100, 570, 200, 30);
+        add(pincode);
+
+        
 
         getContentPane().setBackground(Color.white);
         setSize(850, 870);
