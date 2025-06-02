@@ -2,6 +2,7 @@ package bank.management.system;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+import com.toedter.calendar.JDateChooser;
 
 public class signupOne extends JFrame {
 
@@ -46,6 +47,10 @@ public class signupOne extends JFrame {
         DOB.setFont(new Font("Raleway", Font.BOLD, 20));
         DOB.setBounds(100, 220, 200, 30);
         add(DOB);
+
+        JDateChooser dateChooser = new JDateChooser();    
+        dateChooser.setBounds(300, 220, 400, 30);
+        add(dateChooser);
 
         JLabel gender = new JLabel("Gender:");
         gender.setFont(new Font("Raleway", Font.BOLD, 20));
