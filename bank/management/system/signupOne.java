@@ -50,12 +50,33 @@ public class signupOne extends JFrame {
 
         JDateChooser dateChooser = new JDateChooser();    
         dateChooser.setBounds(300, 220, 400, 30);
+        dateChooser.setForeground(new Color(105, 105, 105));
         add(dateChooser);
 
         JLabel gender = new JLabel("Gender:");
         gender.setFont(new Font("Raleway", Font.BOLD, 20));
         gender.setBounds(100, 270, 200, 30);
         add(gender);
+
+        JRadioButton male = new JRadioButton("male");
+        male.setBounds( 300, 270, 120, 30);
+        male.setBackground(Color.white);
+        add(male);
+
+        JRadioButton female = new JRadioButton("Female");
+        female.setBounds(421, 270, 120, 30);
+        female.setBackground(Color.white);
+        add(female);
+
+        JRadioButton other = new JRadioButton("Other");
+        other.setBounds(542, 270, 120, 30);
+        other.setBackground(Color.white);
+        add(other);
+
+        ButtonGroup gendergroup = new ButtonGroup();
+        gendergroup.add(male);
+        gendergroup.add(female);
+        gendergroup.add(other);
 
         JLabel email = new JLabel("Email Address:");
         email.setFont(new Font("Raleway", Font.BOLD, 20));
@@ -71,6 +92,26 @@ public class signupOne extends JFrame {
         MaritalStatus.setFont(new Font("Raleway", Font.BOLD, 20));
         MaritalStatus.setBounds(100, 370, 200, 30);
         add(MaritalStatus);
+
+        JRadioButton married = new JRadioButton("Married");
+        married.setBounds(300, 370, 120, 30);
+        married.setBackground(Color.white);
+        add(married);
+
+        JRadioButton unmarried = new JRadioButton("Unmarried");
+        unmarried.setBounds(421, 370, 120, 30);
+        unmarried.setBackground(Color.white);
+        add(unmarried);
+
+        JRadioButton otherStatus = new JRadioButton("Other");
+        otherStatus.setBounds(542, 370, 120, 30);
+        otherStatus.setBackground(Color.white);
+        add(otherStatus);
+
+        ButtonGroup maritalStatusGroup = new ButtonGroup();
+        maritalStatusGroup.add(married);
+        maritalStatusGroup.add(unmarried);
+        maritalStatusGroup.add(otherStatus);
 
         JLabel Address = new JLabel("Address:");
         Address.setFont(new Font("Raleway", Font.BOLD, 20));
