@@ -153,6 +153,13 @@ public class signupOne extends JFrame {
         PinCodeTextField.setBounds(300, 570, 400, 30);
         add(PinCodeTextField);
 
+        JButton next = new JButton("Next");
+        next.setBackground(Color.BLACK);
+        next.setForeground(Color.WHITE);
+        next.setFont(new Font("Raleway", Font.BOLD, 20));
+        next.setBounds(620, 650, 80, 30);
+        add(next);
+
         getContentPane().setBackground(Color.white);
         setSize(850, 870);
         setLocation(350, 0);
