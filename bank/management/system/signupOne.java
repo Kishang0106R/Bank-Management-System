@@ -76,15 +76,9 @@ public class signupOne extends JFrame implements ActionListener {
         female.setBackground(Color.white);
         add(female);
 
-        other = new JRadioButton("Other");
-        other.setBounds(542, 270, 120, 30);
-        other.setBackground(Color.white);
-        add(other);
-
         ButtonGroup gendergroup = new ButtonGroup();
         gendergroup.add(male);
         gendergroup.add(female);
-        gendergroup.add(other);
 
         JLabel email = new JLabel("Email Address:");
         email.setFont(new Font("Raleway", Font.BOLD, 20));
