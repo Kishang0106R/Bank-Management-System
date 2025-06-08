@@ -1,10 +1,16 @@
 package bank.management.system;
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
 import java.awt.event.*;
 
 public class signupTwo extends JFrame implements ActionListener {
+
+    JTextField pantextfield, aadharTextField;
+    JRadioButton seniorYes, seniorNo, existingYes, existingNo;
+    JCheckBox seniorCheckBox, notSeniorCheckBox;
+    JComboBox religionCombo, categoryCombo, incomeCombo, educationCombo, occupationCombo;
+    JButton next;
+
 
     signupTwo(){
         setTitle("NEW ACCOUNT APPLICATION FORM-PAGE 2");
@@ -22,7 +28,7 @@ public class signupTwo extends JFrame implements ActionListener {
         add(religion);
 
         String valReligions[] = {"Hindu", "Muslim", "Sikh", "Christian", "Other"};
-        JComboBox religionCombo = new JComboBox(valReligions);
+        religionCombo = new JComboBox<String>(valReligions);
         religionCombo.setBackground(Color.white);
         religionCombo.setBounds(350, 120, 400, 30);
         add(religionCombo);
@@ -33,7 +39,7 @@ public class signupTwo extends JFrame implements ActionListener {
         add(category);
 
         String valcategory[] = {"General", "OBC", "SC", "ST", "Other"};
-        JComboBox categoryCombo = new JComboBox(valcategory);
+        categoryCombo = new JComboBox<String>(valcategory);
         categoryCombo.setBackground(Color.white);
         categoryCombo.setBounds(350, 180, 400, 30);
         add(categoryCombo);
@@ -44,7 +50,7 @@ public class signupTwo extends JFrame implements ActionListener {
         add(income);
 
         String valIncome[]= {"Null", "<1,00,00","<2,00,000", "<5,00,000","<10,00,000", "More then 10,00,000"};
-        JComboBox incomeCombo = new JComboBox(valIncome);
+        incomeCombo = new JComboBox<String>(valIncome);
         incomeCombo.setBackground(Color.white);
         incomeCombo.setBounds(350, 240, 400, 30);
         add(incomeCombo);
@@ -55,7 +61,7 @@ public class signupTwo extends JFrame implements ActionListener {
         add(education);
 
         String valEducation[] = {"Non-Graduate", "Graduate", "Post-Graduate", "Doctorate", "Others"};
-        JComboBox educationCombo = new JComboBox(valEducation);
+        educationCombo = new JComboBox<String>(valEducation);
         educationCombo.setBackground(Color.white);
         educationCombo.setBounds(350, 300, 400, 30);
         add(educationCombo);
@@ -66,17 +72,17 @@ public class signupTwo extends JFrame implements ActionListener {
         add(occupation);
 
         String valOccupation[] = {"Salaried", "Self-Employed", "Bussiness", "Student", "Retired", "Others"};
-        JComboBox occupationComboBox = new JComboBox(valOccupation);
-        occupationComboBox.setBackground(Color.white);
-        occupationComboBox.setBounds(350, 360, 400, 30);
-        add(occupationComboBox); 
+        occupationCombo = new JComboBox<String>(valOccupation);
+        occupationCombo.setBackground(Color.white);
+        occupationCombo.setBounds(350, 360, 400, 30);
+        add(occupationCombo); 
 
         JLabel pan = new JLabel("PAN Number:");
         pan.setFont(new Font("Raleway", Font.BOLD, 20));
         pan.setBounds(100, 420, 200, 30);
         add(pan);
 
-        JTextField pantextfield = new JTextField();
+        pantextfield = new JTextField();
         pantextfield.setFont(new Font("Raleway", Font.BOLD, 18));
         pantextfield.setBounds(350, 420, 400, 30);
         add(pantextfield);
@@ -86,7 +92,7 @@ public class signupTwo extends JFrame implements ActionListener {
         aadhar.setBounds(100, 480, 200, 30);
         add(aadhar);
 
-        JTextField aadharTextField = new JTextField();
+        aadharTextField = new JTextField();
         aadharTextField.setFont(new Font("Raleway", Font.BOLD, 18));
         aadharTextField.setBounds(350, 480, 400, 30);
         add(aadharTextField);
@@ -130,6 +136,14 @@ public class signupTwo extends JFrame implements ActionListener {
         ButtonGroup existingGroup = new ButtonGroup();
         existingGroup.add(existingYes);
         existingGroup.add(existingNo);
+
+        next = new JButton("Next");
+        next.setBackground(Color.black);
+        next.setForeground(Color.white);
+        next.setFont(new Font("Raleway", Font.BOLD, 20));
+        next.setBounds(620, 650, 80, 30);
+        next.addActionListener(this);
+        add(next);
 
         getContentPane().setBackground(Color.white);
         setSize(850, 870);
