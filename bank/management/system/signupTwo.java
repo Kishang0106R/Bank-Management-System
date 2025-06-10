@@ -6,13 +6,15 @@ import java.awt.event.*;
 public class signupTwo extends JFrame implements ActionListener {
 
     JTextField pantextfield, aadharTextField;
-    JRadioButton seniorYes, seniorNo, existingYes, existingNo;
+    JRadioButton existingYes, existingNo;
     JCheckBox seniorCheckBox, notSeniorCheckBox;
     JComboBox religionCombo, categoryCombo, incomeCombo, educationCombo, occupationCombo;
     JButton next;
+    String formNo;
 
 
-    signupTwo(){
+    signupTwo(String formNo) {
+        this.formNo = formNo;
         setTitle("NEW ACCOUNT APPLICATION FORM-PAGE 2");
         setLayout(null);
         
@@ -102,13 +104,13 @@ public class signupTwo extends JFrame implements ActionListener {
         senior.setBounds(100, 540, 200, 30);
         add(senior);
 
-        JCheckBox seniorCheckBox = new JCheckBox("Yes");
+        seniorCheckBox = new JCheckBox("Yes");
         seniorCheckBox.setFont(new Font("Raleway", Font.BOLD, 16));
         seniorCheckBox.setBackground(Color.white);
         seniorCheckBox.setBounds(350, 540, 100, 30);
         add(seniorCheckBox);
 
-        JCheckBox notSeniorCheckBox = new JCheckBox("No");
+        notSeniorCheckBox = new JCheckBox("No");
         notSeniorCheckBox.setFont(new Font("Raleway", Font.BOLD, 16));  
         notSeniorCheckBox.setBackground(Color.white);
         notSeniorCheckBox.setBounds(500, 540, 100, 30);
@@ -123,12 +125,12 @@ public class signupTwo extends JFrame implements ActionListener {
         existing.setBounds(100, 600, 200, 30);
         add(existing);
 
-        JRadioButton existingYes = new JRadioButton("Yes");
+        existingYes = new JRadioButton("Yes");
         existingYes.setBackground(Color.white);
         existingYes.setBounds(350, 600, 100, 30);
         add(existingYes);
 
-        JRadioButton existingNo = new JRadioButton("No");
+        existingNo = new JRadioButton("No");
         existingNo.setBackground(Color.white);
         existingNo.setBounds(500, 600, 100, 30);
         add(existingNo);
@@ -152,9 +154,56 @@ public class signupTwo extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae){
+        String religion = (String) religionCombo.getSelectedItem();
+        String category = (String) categoryCombo.getSelectedItem();
+        String income = (String) incomeCombo.getSelectedItem();
+        String education = (String) educationCombo.getSelectedItem();
+        String occupation = (String) occupationCombo.getSelectedItem();
+        String pan = pantextfield.getText();
+        String aadhar = aadharTextField.getText();
+        String seniorCitizen = null;
+        if(seniorCheckBox.isSelected()){
+            seniorCitizen = "Yes";
+        }else if(notSeniorCheckBox.isSelected()){
+            seniorCitizen = "No";
+        }
+        String existingAccount = null;
+        if(existingYes.isSelected()){
+            existingAccount = "Yes";
+        }else if(existingNo.isSelected()){
+            existingAccount = "No";
+        }
+
+        try{
+            if(religion.equals("")){
+                JOptionPane.showMessageDialog(null, "Religion is required");
+            } else if(category.equals("")){
+                JOptionPane.showMessageDialog(null, "Category is required");
+            } else if(income.equals("")){
+                JOptionPane.showMessageDialog(null, "Income is required");
+            } else if(education.equals("")){
+                JOptionPane.showMessageDialog(null, "Education is required");
+            } else if(occupation.equals("")){
+                JOptionPane.showMessageDialog(null, "Occupation is required");
+            } else if(pan.equals("")){
+                JOptionPane.showMessageDialog(null, "PAN Number is required");
+            } else if(aadhar.equals("")){
+                JOptionPane.showMessageDialog(null, "Aadhar Number is required");
+            } else if(seniorCitizen == null){
+                JOptionPane.showMessageDialog(null, "Senior Citizen status is required");
+            } else if(existingAccount == null){
+                JOptionPane.showMessageDialog(null, "Existing Account status is required");
+            } else {
+                conn conn = new conn();
+                String query = "insert into signupTwo values('"+formNo+"', '"+religion+"', '"+category+"', '"+income+"', '"+education+"', '"+occupation+"', '"+pan+"', '"+aadhar+"', '"+seniorCitizen+"', '"+existingAccount+"')";
+                conn.s.executeUpdate(query);
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
 
     }
     public static void main(String[] args) {
-        new signupTwo();
+        new signupTwo("");
     }
 }
