@@ -6,11 +6,13 @@ import java.awt.event.*;
 public class transaction extends JFrame implements ActionListener {
 
     JButton deposit, withdrawl, fastcash, ministatement, pinchange, balanceenquiry, exit;
+    String pin;
 
-    transaction() {
+    transaction(String pin) {
+        this.pin = pin;
         setLayout(null);
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/transaction.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/Transaction.jpg"));
         Image i2 = i1.getImage().getScaledInstance(900, 900, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel label = new JLabel(i3);
@@ -88,11 +90,14 @@ public class transaction extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae){
         if (ae.getSource() == exit){
             System.exit(0);
+        }else if(ae.getSource() == deposit){
+            setVisible(false);
+            new Deposit(pin).setVisible(true);
         }
     }
 
     public static void main(String[] args) {
-        new transaction();
+        new transaction("");
     }
 }
 
