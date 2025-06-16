@@ -2,6 +2,7 @@ package bank.management.system;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class Deposit extends JFrame implements ActionListener{
     JButton deposit, back;
@@ -51,7 +52,20 @@ public class Deposit extends JFrame implements ActionListener{
     }
     public void actionPerformed (ActionEvent ae){
         if(ae.getSource() == deposit){
-
+            String number = amount.getText();
+            Date date = new Date();
+            if(number.equals("")){
+                JOptionPane.showMessageDialog(null, "Please enter the amount you want to deposit.");
+            }else{
+                try{
+                    conn conn = new conn();
+                    String query = "insert into bank values('"+pin+"','"+date+"', 'deposit', '"+number+"')";
+                    conn.s.executeUpdate(query);
+                    JOptionPane.showMessageDialog(null, "rs"+number+"Deposited Succesfully");
+                } catch(Exception e){
+                    System.out.println(e);
+                }
+            }
         }else if (ae.getSource() == back){
             setVisible(false);
             new transaction(pin).setVisible(true);
