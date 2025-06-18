@@ -96,6 +96,9 @@ public class transaction extends JFrame implements ActionListener {
         }else if(ae.getSource() == withdrawl){
             setVisible(false);
             new Withdrawl(pin).setVisible(true);
+        }else if(ae.getSource() == fastcash){
+            setVisible(false);
+            new FastCash(pin).setVisible(true);
         }
     }
 
