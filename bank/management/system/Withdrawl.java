@@ -62,9 +62,9 @@ public class Withdrawl extends JFrame implements ActionListener{
             }else{
                 try{
                     conn conn = new conn();
-                    String query = "insert into bank values('"+date+"', 'Withdrwal', '"+number+"')";
+                    String query = "INSERT INTO bank (pin, date, type, amount) VALUES('" + pin + "', '" + date + "', 'Withdrawal', '" + number + "')";
                     conn.s.executeUpdate(query);
-                    JOptionPane.showMessageDialog(null , "rs "+ number+" withraw Successfully");
+                    JOptionPane.showMessageDialog(null , "rs "+ number+" withdraw Successfully");
                 }catch(Exception e){
                     System.out.println(e);
                 }

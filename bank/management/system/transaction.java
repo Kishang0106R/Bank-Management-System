@@ -33,7 +33,7 @@ public class transaction extends JFrame implements ActionListener {
         deposit.addActionListener(this);
         label.add(deposit);
 
-        withdrawl = new JButton("Withdrawl");
+        withdrawl = new JButton("Withdrawal");
         withdrawl.setBounds(464, 180, 190, 30);
         withdrawl.setFont(new Font("Raleway", Font.BOLD, 20));
         withdrawl.setBackground(Color.WHITE);
@@ -89,7 +89,10 @@ public class transaction extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae){
         if (ae.getSource() == exit){
-            System.exit(0);
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
         }else if(ae.getSource() == deposit){
             setVisible(false);
             new Deposit(pin).setVisible(true);

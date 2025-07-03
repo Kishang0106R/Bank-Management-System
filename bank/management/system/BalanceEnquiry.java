@@ -12,6 +12,7 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
     BalanceEnquiry(String pin) {
         this.pin = pin;
         setLayout(null);
+
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/Transaction.jpg"));
         Image i2 = i1.getImage().getScaledInstance(900, 900, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -27,34 +28,38 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
 
         conn c = new conn();
         int balance = 0;
-        try{
-            ResultSet rs = c.s.executeQuery("Select * from bank where pin = '"+pin+"'");
-            while(rs.next()){
-                if(rs.getString("type").equals("Deposit")){
-                    balance += Integer.parseInt(rs.getString("amount"));
-                }else{
-                    balance -= Integer.parseInt(rs.getString("amount"));
+
+        try {
+            ResultSet rs = c.s.executeQuery("SELECT * FROM bank WHERE pin = '" + pin + "'");
+            while (rs.next()) {
+                String type = rs.getString("type");
+                int amt = Integer.parseInt(rs.getString("amount"));
+
+                if (type.equalsIgnoreCase("Deposit")) {
+                    balance += amt;
+                } else if (type.equalsIgnoreCase("Withdrawal") || type.equalsIgnoreCase("Fast Cash")) {
+                    balance -= amt;
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
 
-        JLabel Text = new JLabel("Your Current Balance is: "+ balance);
-        Text.setBounds(250, 180, 400, 30);
-        Text.setFont(new Font("Raleway", Font.BOLD, 20));
-        Text.setForeground(Color.WHITE);
-        label.add(Text);
+        JLabel text = new JLabel("Your Current Balance is: Rs " + balance);
+        text.setBounds(250, 180, 400, 30);
+        text.setFont(new Font("Raleway", Font.BOLD, 20));
+        text.setForeground(Color.WHITE);
+        label.add(text);
 
         setSize(900, 900);
         setLocation(300, 0);
         setVisible(true);
         setUndecorated(true);
     }
+
     @Override
-    public void actionPerformed(ActionEvent ae){
-        String action = ae.getActionCommand();
-        if(action.equals("BACK")){
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == back) {
             setVisible(false);
             new transaction(pin).setVisible(true);
         }

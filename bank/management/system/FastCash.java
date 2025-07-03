@@ -86,6 +86,7 @@ JButton a1, a2, a3, a4, a5, a6, back;
         setSize(900, 900);
         setLocation(300, 0);
         setVisible(true);
+        setUndecorated(true);
     }
 
     public void actionPerformed(ActionEvent ae){
@@ -96,27 +97,27 @@ JButton a1, a2, a3, a4, a5, a6, back;
             String amount = ((JButton)ae.getSource()).getText();
             conn conn = new conn();
             try{
-                ResultSet rs = conn.s.executeQuery("select * from bank where pin = '"+pin+"'");
+                ResultSet rs = conn.s.executeQuery("select * from bank where pin = '" + pin + "'");
                 int balance = 0;
-                while(rs.next()){
-                    if(rs.getString("type").equals("Deposit")){
+                while (rs.next()) {
+                    String type = rs.getString("type");
+                    if (type.equalsIgnoreCase("Deposit")) {
                         balance += Integer.parseInt(rs.getString("amount"));
-                    }else{
+                    } else if (type.equals("Withdrawal") || type.equals("Fast Cash")) {
                         balance -= Integer.parseInt(rs.getString("amount"));
                     }
                 }
-                if(ae.getSource() != back && balance < Integer.parseInt(amount)){
+                if (balance < Integer.parseInt(amount)) {
                     JOptionPane.showMessageDialog(null, "Insufficient Balance");
                     return;
                 }
                 Date date = new Date();
-                String query = "insert into bank values('"+pin+"', '"+date+"', 'Withdrawal', '"+amount+"')";
+                String query = "insert into bank values('" + pin + "', '" + date + "', 'Fast Cash', '" + amount + "')";
                 conn.s.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "Rs "+ amount+ " Debited Sucessfully");
-                
+                JOptionPane.showMessageDialog(null, "Rs " + amount + " Debited Successfully");
                 setVisible(false);
                 new transaction(pin).setVisible(true);
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e);
             }
         }
